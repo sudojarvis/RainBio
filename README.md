@@ -8,3 +8,9 @@
 
 ![command](command.png)
 ![rainbio_server](rain_bio_server.png)
+----------------------------------------------
+Here is the example of the output of the application
+aa.py for amino acid.
+![aa.py](aa.png)
+
+![aa_fr.py](aa_fr.png)
