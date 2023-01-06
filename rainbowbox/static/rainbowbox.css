@@ -1,0 +1,253 @@
+
+
+.rainbowbox_header_table {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.rainbowbox_header_element_group {
+  color: #888;
+  text-align: center;
+}
+.rainbowbox_header_element_group td {
+  border-right: 1px solid #888;
+}
+.rainbowbox_header_element_group td:last-of-type {
+  border-right: none;
+}
+
+.rainbowbox_header_element {
+  text-align: center;
+  padding: 0px;
+}
+.rainbowbox_header_element_no_border {
+  text-align: center;
+  padding: 0px;
+}
+.rainbowbox_header_element td {
+  border-top: 1px solid #888;
+  border-bottom: 1px solid #888;
+  word-break: break-all;
+/*  cursor: pointer;  */
+}
+/*.rainbowbox_header_element td:hover {
+  text-decoration: underline;
+}*/
+.rainbowbox_header_element td:first-of-type {
+  border-left: 1px solid #888;
+}
+.rainbowbox_header_element td:last-of-type {
+  border-right: 1px solid #888;
+}
+.rainbowbox_header_element_td_border1 {
+  border-right: 1px solid white;
+}
+.rainbowbox_header_element_td_border2 {
+  border-right: 1px solid #888;
+}
+
+.rainbowbox_dashed_td {
+  border-right: 1px dashed #555;
+}
+.rainbowbox_dashed_td:first-of-type {
+  border-left: 1px solid #888;
+}
+.rainbowbox_dashed_td:last-of-type {
+  border-right: 1px solid #888;
+}
+.rainbowbox_lined_td {
+  border-right: 1px solid #888;
+}
+.rainbowbox_lined_td_left {
+  border-left: 1px solid #888;
+}
+.rainbowbox_hole_dashed_table {
+  width: 100%;
+  height: 100%;
+}
+.rainbowbox_hole_dashed_table tr td {
+  border-right: 1px dashed #555;
+}
+.rainbowbox_hole_dashed_table tr td:last-of-type {
+  border-right: none;
+}
+
+.rainbowbox_parent_0 {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  border-left: 1px solid #888;
+  border-right: 1px solid #888;
+}
+.rainbowbox_box {
+  box-sizing: border-box;
+  padding-left: 2px;
+  padding-right: 3px;
+  
+  overflow-y: hidden;
+  overflow-wrap: break-word;
+}
+.rainbowbox_box:hover {
+  border: solid 1px black;
+  margin-left: -1px;
+  margin-top: -1px;
+}
+
+.rainbowbox_box2 {
+}
+.rainbowbox_box_label {
+  padding: 0.2em;
+}
+.rainbowbox_box_label_weighted {
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+}
+/*.rainbowbox_box_label:nth-child(even) {*/
+.rainbowbox_box_label_even {
+  background: rgba(255, 255, 255, 0.25)
+}
+
+.rainbowbox_hole1 {
+  background-color: white;
+  position: absolute;
+  top: 0%;
+  height: 45%;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.rainbowbox_hole2 {
+  background-color: white;
+  position: absolute;
+  top: 55%;
+  height: 45%;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+
+.rainbowbox_popup {
+  position: absolute;
+  display: none;
+  background-color: #ffffdd;
+  border: 1px solid black;
+  padding: 0.5em;
+  z-index: 300;
+  color: black;
+}
+.rainbowbox_popup_title {
+  margin-bottom: 0.7em;
+  font-weight: bold;
+}
+
+.rainbowbox_bottom {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  height: 10px;
+  background-image: linear-gradient(0deg, white, #AAA 10px);
+}
+
+.rainbowbox_table_2by2 {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.rainbowbox_table_2by2_header td {
+  text-align: center;
+  border-top: 1px solid #888;
+  border-bottom: 2px solid white;
+  width: 30%;
+}
+.rainbowbox_table_2by2_header td:first-of-type {
+  border-top: none;
+}
+.rainbowbox_table_2by2_row td {
+  vertical-align: top;
+  padding: 0px;
+}
+td.rainbowbox_table_2by2_group {
+  text-align: right;
+  color: #888;
+  padding-top: 6px;
+  padding-right: 0.2em;
+}
+.rainbowbox_table_2by2_left {
+  border-left: 1px solid #888;
+  border-right: 3px solid white;
+}
+.rainbowbox_table_2by2_right {
+  border-right: 1px solid #888;
+  border-left: 3px solid white;
+}
+.rainbowbox_table_2by2_both {
+  border-left: 1px solid #888;
+  border-right: 1px solid #888;
+}
+.rainbowbox_table_2by2_cell {
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
+}
+.rainbowbox_table_2by2_cell:first-of-type {
+  padding-top: 6px;
+}
+.rainbowbox_table_2by2_cell:last-of-type {
+  padding-bottom: 6px;
+}
+
+.rainbowbox_buttonx {
+  background-color: #E9E9E9;
+  font-size: 200%;
+  cursor: pointer;
+  color: white;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  text-align: center;
+  vertical-align: middle;
+  width: 4%;
+  height: 2em;
+  position: relative;
+  left: 95%;
+  top: 2.2em;
+}
+.rainbowbox_buttonx:hover {
+  background-color: #F00; 
+}
+
+.rainbowbox_widget_table {
+  width: 100%;
+  table-layout:fixed;
+  text-align: center;
+}
+
+.rainbowbox_table_2by2_sep {
+  border-bottom: 1px solid #888;
+}
+
+.rainbowbox_extra_irregular_weights td {
+  vertical-align: bottom;
+}
+.rainbowbox_extra_irregular_weights_bottom td {
+  vertical-align: top;
+}
+
+
+.rainbowbox_legend_table {
+  border: 1px solid #888;
+  text-align: center;
+}
+.rainbowbox_legend_td {
+  min-width: 2em;
+  height: 2em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+
+.rainbowbox_ellipsis {
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+  white-space: nowrap;
+}
