@@ -1,4 +1,4 @@
-# Rainbio
+# RainBioBox
 
 ## How to run
 
