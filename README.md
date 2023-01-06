@@ -6,5 +6,5 @@
 3. `cd RainBio` to go to the project directory
 4. Run `python3 run.py`. This will start http://localhost:8080/static/appliweb/rainbio/index.html
 
-## Here is the video demo
-
+![command](command.png)
+![rainbio_server](rain_bio_server.png)
