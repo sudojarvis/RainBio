@@ -1,0 +1,4 @@
+Set A:a,b,c,d,e,f,g;
+Set B:a,b,c,h,i,j;
+Set C:a,b,c,d,e,k,l;
+Set D:a,b,k,l;

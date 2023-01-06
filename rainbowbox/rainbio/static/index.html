@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html>
+<head>
+<title>RainBio</title>
+<meta charset="utf-8"/>
+<script src="saveas.js"></script>
+<script src="brython.js"></script>
+</head>
+<body onload="brython(1)">
+  <img src="image_titre.png" style="float: right; width: 15%"/>
+  <h1 style="margin-top: 0.25em; margin-bottom: 0px;">RainBio</h1>
+  <i>Visualizing large biological sets with rainbow boxes -- an alternative to Venn diagrams!</i><br/>
+  <div style="margin-top: 1em;">The web version of RainBio supports up to 15 sets with 40,000 elements (<i>e.g.</i> 15 samples with 40,000 genes).</div>
+  <div style="margin-top: 0.5em;">If you use RainBio in an academic context, <b>please cite the following paper:</b>
+  Lamy JB, Tsopra R. RainBio: <a href="http://www.lesfleursdunormal.fr/_downloads/article_rainbio_tvcg.pdf">Proportional visualization of large sets in biology</a>. IEEE Transactions on Visualisation and Computer Graphics 2020;26(11):3285-3298.</div>
+  <div style="margin-top: 0.5em;">In case of troubles, please contact Jean-Baptiste Lamy: <span id="email_jibalesfleursdunormalfr"></span><script>var x=document.getElementById('email_jibalesfleursdunormalfr');var y = '';y += '<a hre';y += 'f="mai';y += 'lto:ji';y += 'ba&#64les';y += 'fleurs';y += 'dunorm';y += 'al.fr"';y += '>jiba&#64';y += 'lesfle';y += 'ursdun';y += 'ormal.';y += 'fr</a>';y += '';x.innerHTML = y;</script>.</div>
+  <div style="clear: both;"></div><br/>
+  
+  <table style="width: 100%; border-top: 1px solid gray;"><tr><td valign="top" style="width: 50%;">
+  <form action="/appliweb/rainbio/results.html" method="POST" enctype="multipart/form-data">
+  <b>You can upload a file</b> in the <a href="http://www.interactivenn.net" target="_blank">InteractiVenn</a> format:<br/><br/>
+  <input type="file" name="dataset"/><br/>
+  <input type="submit"/>
+  </form>
+  <br/>
+  <b>You can test the following demo dataset:</b><br/><br/>
+  <div style="margin-left: 2em;">
+  <a href="/appliweb/rainbio/results.html?preload_dataset=prostate_5.ivenn">prostate_5.ivenn</a> from InteractiVenn (<a href="prostate_5.ivenn" download="download">download</a>)<br/>
+  <a href="/appliweb/rainbio/results.html?preload_dataset=banana_6.ivenn">banana_6.ivenn</a> from InteractiVenn (<a href="banana_6.ivenn" download="download">download</a>)<br/>
+  <a href="/appliweb/rainbio/results.html?preload_dataset=algae_6.ivenn">algae_6.ivenn</a> from <a href="https://datadryad.org//resource/doi:10.5061/dryad.k83g4/15">Nelson DR et al.</a> (<a href="algae_6.ivenn" download="download">download</a>)<br/>
+  <a href="/appliweb/rainbio/results.html?preload_dataset=deg_6.ivenn">deg_6.ivenn</a> from <a href="https://www.biorxiv.org/content/early/2015/11/18/032128">Gonzalo HV et al.</a> (<a href="deg_6.ivenn" download="download">download</a>)<br/>
+  <a href="/appliweb/rainbio/results.html?preload_dataset=mammary_12.ivenn">mammary_12.ivenn</a> from <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE16997">Lim E et al.</a> (<a href="mammary_12.ivenn" download="download">download</a>)<br/>
+  <a href="/appliweb/rainbio/results.html?preload_dataset=random_15.ivenn">random_15.ivenn</a> (<a href="random_15.ivenn" download="download">download</a>)<br/><br/>
+  </div>
+  
+  </td><td valign="top" style="width: 50%;">
+  
+  <b>You can create your own dataset</b> :<br/>
+  Please put one element per line, and let empty unsed sets.<br/>
+  Then, you can save your dataset, and upload it (on the left panel).<br/><br/>
+  
+  <button onclick="document.getElementById('import').click();">Import...</button>
+  <button onclick="on_save_as();">Save as...</button>
+  <input type="file" id="import" style="display: none;" onChange="on_import(event);"/><br/><br/>
+  
+  <div id="listlist"></div>
+
+<script type="text/python">
+from browser import document, window
+
+s = ""
+for i in range(1, 16):
+  s += """<input id="listname%s" name="listname%s" type="text" value="Set%s" style="width: 80%%;"/><br/>""" % (i, i, i)
+  s += """<textarea id="list%s" name="list%s" rows="5" style="width: 80%%;"></textarea><br/><br/>""" % (i, i)
+document["listlist"].innerHTML = s
+
+def gen_dataset():
+  l = []
+  for i in range(1, 16):
+    list_content = document["list%s" % i].value.strip()
+    if not list_content: break
+    l.append("%s:%s" % (document["listname%s" % i].value, ",".join(set(filter(None, list_content.split("\n"))))))
+  return ";\n".join(l)
+
+def on_save_as():
+  window.saveas(gen_dataset(), "dataset.ivenn", "ivenn")
+window.on_save_as = on_save_as
+
+def on_import(e):
+  file = e.target.files[0]
+  if not file: return
+  reader = window.FileReader.new()
+  def on_loaded(e2):
+    content = e2.target.result
+    i = 1
+    for line in content.split("\n"):
+      name, elements = line.split(":", 1)
+      name = name.strip()
+      elements = elements.strip()
+      if elements.endswith(";"): elements = elements[:-1]
+      document["listname%s" % i].value = name
+      document["list%s" % i].value = elements.replace(",", "\n")
+      i += 1
+      
+    while i <= 15:
+      document["listname%s" % i].value =  document["list%s" % i].value = ""
+      i += 1
+
+  reader.onload = on_loaded
+  reader.readAsText(file)
+               
+window.on_import = on_import
+
+
+</script>
+  
+  </td></tr></table>
+
+  
+</body>
+</html>
